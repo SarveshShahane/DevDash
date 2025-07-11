@@ -143,16 +143,30 @@ DevDash/
 
 ### Required API Keys
 - **GitHub Personal Access Token** - For repository and profile data
-- **LeetCode GraphQL API** - For coding statistics
-- **Contest APIs** - For competitive programming contests
+- **Clist API** - For competitive programming contests data
+- **Clist Username** - Your Clist.by profile username
 
 ### Configuration
 Add your API keys to the `.env` file in the backend directory:
 ```env
-GITHUB_TOKEN=your_github_token_here
-LEETCODE_API_KEY=your_leetcode_key_here
+GITHUB_TOKEN=your_github_personal_access_token
+CLIST_USERNAME=your_clist_username
+CLIST_API_KEY=your_clist_api_key
 PORT=5000
 ```
+
+### How to Get API Keys
+
+**GitHub Personal Access Token:**
+1. Go to GitHub Settings → Developer settings → Personal access tokens
+2. Generate new token with `repo` and `user` scopes
+3. Copy the token to your `.env` file
+
+**Clist API:**
+1. Visit [clist.by](https://clist.by/) and create an account
+2. Go to API section in your profile settings
+3. Generate an API key
+4. Use your Clist username and the generated API key
 
 ## 📱 Dashboard Pages
 

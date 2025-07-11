@@ -1,0 +1,171 @@
+@import "tailwindcss";
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-accent: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #666666;
+    --accent-primary: #6366f1;
+    --accent-secondary: #8b5cf6;
+    --accent-tertiary: #06b6d4;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --spacing-3xl: 6rem;
+    
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+    
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-secondary: 'Poppins', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    
+    --container-max: 1200px;
+    --container-padding: 2rem;
+}
+
+body,html{
+    margin: 0;
+    height: 100%;
+    background-color: var(--bg-primary);
+}
+.brand{
+    color: rgb(50, 41, 130);
+    font-size: 20px;
+    font-weight: 700;
+    transition:text-shadow 0.3s ease;
+}
+.brand:hover{
+    text-shadow: 0px 0px 10px var(--accent-tertiary);
+}
+.brand>span{
+    color: var(--accent-tertiary);
+    transition:text-shadow 0.3s ease;
+
+}
+.brand>span:hover{
+    text-shadow: 0px 0px 10px var(--accent-tertiary);
+
+}
+.nav{
+    box-shadow: -1px 5px 8px rgba(99, 102, 241, 0.3);
+    border-radius: 1000px;
+}
+.nav-item{
+    font-size: 15px;
+    position: relative;
+}
+.nav-item:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #06b6d4;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover:after,
+.nav-item.active:after {
+  width: 100%;
+}
+
+.inputs{
+    background-color: var(--bg-accent);
+    border: 1px solid var(--accent-tertiary);
+    color: var(--text-primary);
+    font-style: var(--font-mono);
+}
+.inputs:focus{
+    outline: none;
+    box-shadow: var(--shadow-glow);
+
+}
+.label{
+    margin: auto 10px auto 0px;
+    color: var(--text-secondary);
+}
+body::-webkit-scrollbar{
+    color: transparent;
+}
+.add-btn{
+    background-color: var(--accent-secondary);
+}
+.repo-card{
+    background-color: var(--bg-secondary);
+    border:1px solid var(--bg-accent);
+}
+
+.git-follow{
+    color: var(--text-secondary);
+}
+.git-profile,.leet-profile{
+    background-color: var(--bg-secondary);
+    box-shadow: 0px 0px 10px rgba(99, 102, 241, 0.3)
+
+}
+.git-username{
+    color: var(--text-primary);
+}
+.git-bio{
+    color: #cccccc;
+}
+.git-info{
+    background-color: var(--bg-accent);
+    color: var(--text-secondary);
+}
+
+@media (max-width:768px) {
+    .git{
+        display: block !important;
+        flex-direction: column;
+    }
+    .repos{
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+/* Add this to your CSS file */
+.nav-item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+
+.leetcode-pic{
+    border:2px solid var(--accent-primary);
+    box-shadow:0px 0px 20px var(--accent-secondary);
+}
+.leet-profile{
+    border: 1px solid var(--bg-accent); 
+}
+.contest::-webkit-scrollbar{
+    display:none
+}

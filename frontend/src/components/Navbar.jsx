@@ -45,7 +45,6 @@ const Navbar = () => {
 
         <div className='hidden md:block'>
           <ul className='flex gap-4 text-[#06b6d4]'>
-            <li><NavLink className='nav-item ' to="/dash">Dashboard</NavLink></li>
             <li><NavLink className='nav-item ' to="/git">GitHub</NavLink></li>
             <li><NavLink className='nav-item ' to="/leetcode">Leetcode</NavLink></li>
             <li><NavLink className='nav-item ' to="/tasks">Tasks</NavLink></li>
@@ -81,13 +80,7 @@ const Navbar = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <li><NavLink
-                    className={({ isActive }) => `block py-2 px-3 rounded-lg transition-colors ${isActive ? 'bg-[#06b6d41a] text-[#06b6d4]' : 'text-white hover:bg-[#ffffff10]'}`}
-                    to="/dash"
-                    onClick={handleLinkClick}
-                  >
-                    Dashboard
-                  </NavLink></li>
+                 
 
                   <li><NavLink
                     className={({ isActive }) => `block py-2 px-3 rounded-lg transition-colors ${isActive ? 'bg-[#06b6d41a] text-[#06b6d4]' : 'text-white hover:bg-[#ffffff10]'}`}

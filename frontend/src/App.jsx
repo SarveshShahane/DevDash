@@ -14,7 +14,6 @@ const App = () => {
 <Navbar/>
 
 <Routes>
-  <Route path='/dash' element={<div>Dashboard</div>}/>
   <Route path='/git' element={<GitHub/>}/>
   <Route path='/leetcode' element={<LeetCode/>}/>
   <Route path='/tasks' element={<TodoList/>}/>

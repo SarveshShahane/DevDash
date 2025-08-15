@@ -1,17 +1,22 @@
 @import "tailwindcss";
 :root {
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #111111;
-    --bg-accent: #1a1a1a;
+    --bg-primary: #0f1116;
+    --bg-secondary: #131620;
+    --bg-accent: #1d2030;
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
     --text-muted: #666666;
     --accent-primary: #6366f1;
     --accent-secondary: #8b5cf6;
     --accent-tertiary: #06b6d4;
+    
     --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-2: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
     --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    
+    --bg-gradient-main: radial-gradient(at 20% 25%, rgba(67, 56, 202, 0.10) 0px, transparent 50%),
+                        radial-gradient(at 80% 80%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+                        radial-gradient(at 50% 50%, rgba(124, 58, 237, 0.05) 0px, transparent 50%);
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
@@ -50,49 +55,75 @@
 
 body,html{
     margin: 0;
+    padding: 0;
     height: 100%;
+    min-height: 100vh;
     background-color: var(--bg-primary);
+    background-image: var(--bg-gradient-main);
+    background-attachment: fixed;
+    color-scheme: dark;
+    overflow-x: hidden;
+    font-family: var(--font-primary);
+    color: var(--text-primary);
 }
 .brand{
-    color: rgb(50, 41, 130);
+    color: white;
     font-size: 20px;
     font-weight: 700;
-    transition:text-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    background-image: linear-gradient(135deg, #fff 30%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 .brand:hover{
-    text-shadow: 0px 0px 10px var(--accent-tertiary);
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.5);
 }
 .brand>span{
     color: var(--accent-tertiary);
-    transition:text-shadow 0.3s ease;
-
+    transition: all 0.3s ease;
+    background-image: linear-gradient(135deg, #06b6d4 30%, #0284c7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 .brand>span:hover{
-    text-shadow: 0px 0px 10px var(--accent-tertiary);
-
+    text-shadow: 0px 0px 12px rgba(6, 182, 212, 0.5);
 }
 .nav{
-    box-shadow: -1px 5px 8px rgba(99, 102, 241, 0.3);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    background-color: rgba(17, 24, 39, 0.4);
     border-radius: 1000px;
 }
 .nav-item{
     font-size: 15px;
     position: relative;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
 }
 .nav-item:after {
   content: '';
   position: absolute;
   width: 0;
   height: 1px;
-  bottom: -2px;
-  left: 0;
-  background-color: #06b6d4;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: linear-gradient(to right, transparent, #06b6d4, transparent);
   transition: width 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .nav-item:hover:after,
 .nav-item.active:after {
-  width: 100%;
+  width: 80%;
 }
 
 .inputs{
@@ -110,24 +141,30 @@ body,html{
     margin: auto 10px auto 0px;
     color: var(--text-secondary);
 }
-body::-webkit-scrollbar{
-    color: transparent;
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 .add-btn{
     background-color: var(--accent-secondary);
 }
-.repo-card{
-    background-color: var(--bg-secondary);
-    border:1px solid var(--bg-accent);
-}
 
 .git-follow{
     color: var(--text-secondary);
-}
-.git-profile,.leet-profile{
-    background-color: var(--bg-secondary);
-    box-shadow: 0px 0px 10px rgba(99, 102, 241, 0.3)
-
 }
 .git-username{
     color: var(--text-primary);
@@ -152,20 +189,11 @@ body::-webkit-scrollbar{
         align-items: center;
     }
 }
-/* Add this to your CSS file */
 .nav-item {
   position: relative;
   transition: all 0.3s ease;
 }
 
-
-.leetcode-pic{
-    border:2px solid var(--accent-primary);
-    box-shadow:0px 0px 20px var(--accent-secondary);
-}
-.leet-profile{
-    border: 1px solid var(--bg-accent); 
-}
 .contest::-webkit-scrollbar{
     display:none
 }

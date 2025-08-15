@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 const CACHE_KEY = "contestData";
-const CACHE_EXPIRY = 1000 ; 
+const CACHE_EXPIRY = 6 * 60 * 60 * 1000;
 import { useContestStore } from "../zustand/store";
 export const useContestData = () => {
   const { setCData } = useContestStore();
@@ -28,6 +28,5 @@ export const useContestData = () => {
       })
       .finally(() => setLoading(false));
   }, []);
-//   console.log(data);
   return { data, loading };
 };

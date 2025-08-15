@@ -1,12 +1,6 @@
 import { useState, useEffect } from 'react';
 
-/**
- * Custom hook that provides a state that syncs with localStorage
- * 
- * @param {string} key - The localStorage key to store the value under
- * @param {any} initialValue - The initial value if no value exists in localStorage
- * @returns {[any, Function]} - A stateful value and a function to update it
- */
+
 export const useLocalStorage = (key, initialValue) => {
   const readValue = () => {
     if (typeof window === 'undefined') {

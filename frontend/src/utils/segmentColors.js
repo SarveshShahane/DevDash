@@ -1,5 +1,4 @@
 export const languageColors = {
-  // Popular languages
   JavaScript: '#f1e05a',
   TypeScript: '#3178c6',
   Python: '#3572A5',
@@ -17,7 +16,6 @@ export const languageColors = {
   HTML: '#e34c26',
   CSS: '#563d7c',
   
-  // Other languages
   Assembly: '#6E4C13',
   Batchfile: '#C1F12E',
   Clojure: '#db5855',
@@ -44,23 +42,19 @@ export const languageColors = {
   Svelte: '#ff3e00',
   Vue: '#41b883',
   
-  // Web frameworks/libraries
   React: '#61dafb',
   Angular: '#dd0031',
   'Next.js': '#000000',
   Svelte: '#ff3e00',
   
-  // Markup & Config
   JSON: '#292929',
   Markdown: '#083fa1',
   YAML: '#cb171e',
   XML: '#0060ac',
   
-  // Others
   Jupyter: '#DA5B0B',
   Solidity: '#AA6746',
   
-  // Default for any unlisted language
   Other: '#ededed'
 };
 

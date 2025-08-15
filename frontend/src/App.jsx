@@ -8,19 +8,25 @@ import GitHub from './pages/GitHub'
 import TodoList from './pages/TodoList'
 import DevKit from './pages/Devkit'
 import Contests from './pages/Contests'
+import Dashboard from './pages/Dashboard'
+import GlobalBackgroundEffect from './animations/GlobalBackgroundEffect'
 const App = () => {
   return (
-    <div>
-<Navbar/>
+    <div className="min-h-screen bg-[#0f1116] text-white relative overflow-x-hidden">
+      <GlobalBackgroundEffect />
+      <Navbar />
 
-<Routes>
-  <Route path='/git' element={<GitHub/>}/>
-  <Route path='/leetcode' element={<LeetCode/>}/>
-  <Route path='/tasks' element={<TodoList/>}/>
-  <Route path='/contests' element={<Contests/>}/>
-  <Route path='/devkit' element={<DevKit/>}/>
-  <Route path='/settings' element={<Settings/>}/>
-</Routes>
+      <div className="relative z-10 ">
+        <Routes>
+          <Route path='/' element={<Dashboard/>}/>
+          <Route path='/git' element={<GitHub/>}/>
+          <Route path='/leetcode' element={<LeetCode/>}/>
+          <Route path='/tasks' element={<TodoList/>}/>
+          <Route path='/contests' element={<Contests/>}/>
+          <Route path='/devkit' element={<DevKit/>}/>
+          <Route path='/settings' element={<Settings/>}/>
+        </Routes>
+      </div>
     </div>
   )
 }

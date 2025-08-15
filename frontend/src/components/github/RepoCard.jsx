@@ -26,8 +26,8 @@ const RepoCard = ({ repo, loading }) => {
     initial={{ opacity: 0, x: -5 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.3 }}
-    whileHover={{ translateY: -2, boxShadow: '1px 5px 12px rgba(0,255,135,0.4)' }}
-    className='flex flex-col w-60 repo-card ml-10 rounded-md space-y-4 overflow-hidden  p-2'>
+    whileHover={{ translateY: -2 }}
+    className='flex flex-col w-60 bg-gray-800/50 border border-gray-700/50 backdrop-blur-md shadow-lg shadow-gray-950/20 ml-10 rounded-xl space-y-4 overflow-hidden p-4'>
     <motion.h2 className='repository text-white font-semibold'><TypingText text={name} /></motion.h2>
     
     <div className='text-[#cccccc] text-sm mb-3 px-2  min-h-[60px]'>
@@ -54,7 +54,7 @@ const RepoCard = ({ repo, loading }) => {
                     <span className="text-gray-300">{forks}</span>
                 </div>
             </div>
-            <div className="flex bg-gray-800 h-2 rounded-lg overflow-hidden">
+            <div className="flex bg-gray-800/70 h-2 rounded-lg overflow-hidden">
                 {segments.map(s => (
                     <motion.div
                         key={s.lang}
@@ -98,9 +98,19 @@ const RepoCard = ({ repo, loading }) => {
                 )}
             </div>
             <div className="flex justify-between">
-                {homepage && <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className='px-3 py-1 bg-green-600  hover:bg-green-500 w-max rounded font-medium'><a href={homepage}>Live</a></motion.button>
+                {homepage && <motion.button 
+                    whileHover={{ scale: 1.03 }} 
+                    whileTap={{ scale: 0.97 }} 
+                    className='px-3 py-1 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white w-max rounded-md font-medium shadow-md'>
+                    <a href={homepage} className="flex items-center gap-1">Live</a>
+                </motion.button>
                 }
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className='px-3 py-1 bg-gray-600 hover:bg-gray-700  w-max rounded font-medium'><a href={url}>Github</a></motion.button>
+                <motion.button 
+                    whileHover={{ scale: 1.03 }} 
+                    whileTap={{ scale: 0.97 }} 
+                    className='px-3 py-1 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white w-max rounded-md font-medium shadow-md'>
+                    <a href={url} className="flex items-center gap-1">GitHub</a>
+                </motion.button>
             </div>
         </motion.div>
     )

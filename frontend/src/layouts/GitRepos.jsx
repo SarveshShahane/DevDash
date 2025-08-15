@@ -59,7 +59,7 @@ const GitRepos = ({ repos }) => {
                             exit={{ opacity: 0, y: -20 }}
                             transition={{
                                 duration: 0.3,
-                                delay: Math.min(index * 0.1, 0.5), // Cap delay for better performance
+                                delay: Math.min(index * 0.1, 0.5), 
                                 ease: "easeOut"
                             }}
                             className="flex "
@@ -70,14 +70,12 @@ const GitRepos = ({ repos }) => {
                 </AnimatePresence>
             </div>
             
-            {/* No repositories message */}
             {displayRepos.length === 0 && (
                 <div className="text-center py-8">
                     <p className="text-gray-400">No repositories found</p>
                 </div>
             )}
             
-            {/* Show more/less button */}
             {more && (
                 <div className='flex justify-center mt-4'>
                     <motion.button
@@ -92,7 +90,6 @@ const GitRepos = ({ repos }) => {
                 </div>
             )}
             
-            {/* Repository count indicator */}
             <div className="text-center text-xs text-gray-400 pb-2">
                 Showing {displayRepos.length} of {sortedRepos.length} repositories
             </div>

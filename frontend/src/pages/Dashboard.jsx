@@ -58,7 +58,6 @@ const Dashboard = () => {
       hardSolved: 0
     };
 
-    console.log(leetcodeData)
     return {
       solved: leetcodeData.totalSolved || 0,
       ranking: leetcodeData.profile?.ranking || 0,

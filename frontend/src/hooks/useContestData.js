@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../api";
 const CACHE_KEY = "contestData";
 const CACHE_EXPIRY = 6 * 60 * 60 * 1000;
 import { useContestStore } from "../zustand/store";
@@ -17,8 +18,13 @@ export const useContestData = () => {
         return;
       }
     }
-    fetch("http://localhost:3000/api/contests/upcoming")
-      .then((res) => res.json())
+    api.get("contests/upcoming")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Contests API error: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((fresh) => {
         localStorage.setItem(
           CACHE_KEY,

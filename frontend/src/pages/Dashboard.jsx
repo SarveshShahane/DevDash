@@ -1,7 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { useReducedMotion } from '../hooks/useReducedMotion'
-import LeetCodeDataDebug from '../components/debug/LeetCodeDataDebug'
 import { 
   Github, 
   Star,
@@ -59,8 +57,8 @@ const Dashboard = () => {
       mediumSolved: 0,
       hardSolved: 0
     };
-    
-    
+
+    console.log(leetcodeData)
     return {
       solved: leetcodeData.totalSolved || 0,
       ranking: leetcodeData.profile?.ranking || 0,
@@ -189,16 +187,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        {hasLeetcodeUsername && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mb-6"
-          >
-            <LeetCodeDataDebug />
-          </motion.div>
-        )}
-
+       
         <motion.div
           initial={!reducedMotion ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
@@ -878,7 +867,11 @@ const Dashboard = () => {
               {hasLeetcodeUsername && (
                 <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-gray-700 rounded-lg bg-gray-800/50">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-green-500 flex items-center justify-center bg-gray-900 flex-shrink-0">
-                    <Code className="text-green-400" size={16} />
+                    <img
+                      src={leetcodeData?.profile?.userAvatar || leetcodeData?.avatar_url || leetcodeData?.avatar || `https://leetcode.com/${leetcodeUsername}.png`}
+                      alt={leetcodeData?.profile?.username || leetcodeData?.profile?.login || leetcodeData?.login || leetcodeUsername}
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-green-500 flex-shrink-0"
+                    />
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-sm sm:text-md font-semibold text-white truncate">{leetcodeUsername}</h3>

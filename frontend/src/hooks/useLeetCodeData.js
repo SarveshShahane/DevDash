@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../api";
 const CACHE_KEY = "leetcodeData";
 const CACHE_EXPIRY = 1000;
 import { useLeetCodeStore } from "../zustand/store";
@@ -41,7 +42,7 @@ export function useLeetCodeData(username) {
     
     setLoading(true);
     
-    fetch(`http://localhost:3000/api/leetcode/${username}`)
+  api.get(`leetcode/${username}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`LeetCode API error: ${res.status} ${res.statusText}`);

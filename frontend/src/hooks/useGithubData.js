@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../api";
 const CACHE_KEY = "githubData";
 const CACHE_EXPIRY = 1000; 
 export function useGithubData(username) {
@@ -28,7 +29,7 @@ export function useGithubData(username) {
     
     setLoading(true);
     setError(null);
-    fetch(`http://localhost:3000/api/github/${username}`)
+  api.get(`github/${username}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);

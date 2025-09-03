@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 export const useLeetCodeStats = (username) => {
   const [calendar, setCalendar] = useState(null);
@@ -18,16 +18,28 @@ export const useLeetCodeStats = (username) => {
 
       try {
         const [calendarRes, contestsRes, topicsRes, dailyRes] = await Promise.all([
-          axios.get(`http://localhost:3000/api/leetcode/${username}/calendar`),
-          axios.get(`http://localhost:3000/api/leetcode/${username}/contests`),
-          axios.get(`http://localhost:3000/api/leetcode/${username}/topics`),
-          axios.get(`http://localhost:3000/api/leetcode/daily/challenge`)
+          api.get(`leetcode/${username}/calendar`).then(async r => {
+            if (!r.ok) throw new Error(`Calendar API error: ${r.status}`);
+            return r.json();
+          }),
+          api.get(`leetcode/${username}/contests`).then(async r => {
+            if (!r.ok) throw new Error(`Contests API error: ${r.status}`);
+            return r.json();
+          }),
+          api.get(`leetcode/${username}/topics`).then(async r => {
+            if (!r.ok) throw new Error(`Topics API error: ${r.status}`);
+            return r.json();
+          }),
+          api.get(`leetcode/daily/challenge`).then(async r => {
+            if (!r.ok) throw new Error(`Daily challenge API error: ${r.status}`);
+            return r.json();
+          })
         ]);
 
-        setCalendar(calendarRes.data || null);
-        setContests(Array.isArray(contestsRes.data.contests) ? contestsRes.data.contests : []);
-        setTopics(topicsRes.data || {});
-        setDailyChallenge(dailyRes.data || null);
+        setCalendar(calendarRes || null);
+        setContests(Array.isArray(contestsRes.contests) ? contestsRes.contests : []);
+        setTopics(topicsRes || {});
+        setDailyChallenge(dailyRes || null);
       } catch (err) {
         console.error('Error fetching LeetCode stats:', err);
         setError(err.response?.data?.error || 'Failed to fetch LeetCode statistics');

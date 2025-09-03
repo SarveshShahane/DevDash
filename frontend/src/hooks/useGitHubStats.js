@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 export const useGitHubStats = (username) => {
   const [stats, setStats] = useState(null);
@@ -17,29 +17,36 @@ export const useGitHubStats = (username) => {
 
       try {
         const [statsRes, activityRes, trendingRes] = await Promise.allSettled([
-          axios.get(`http://localhost:3000/api/github/${username}/stats`),
-          axios.get(`http://localhost:3000/api/github/${username}/activity`),
-          axios.get(`http://localhost:3000/api/github/${username}/trending`)
+          api.get(`github/${username}/stats`).then(async r => {
+            if (!r.ok) throw new Error(`Stats API error: ${r.status}`);
+            return r.json();
+          }),
+          api.get(`github/${username}/activity`).then(async r => {
+            if (!r.ok) throw new Error(`Activity API error: ${r.status}`);
+            return r.json();
+          }),
+          api.get(`github/${username}/trending`).then(async r => {
+            if (!r.ok) throw new Error(`Trending API error: ${r.status}`);
+            return r.json();
+          })
         ]);
 
         if (statsRes.status === 'fulfilled') {
-          setStats(statsRes.value.data || statsRes.value.data?.stats || {});
+          setStats(statsRes.value || {});
         } else {
           console.error('Error fetching GitHub stats:', statsRes.reason);
           setStats({});
         }
 
         if (activityRes.status === 'fulfilled') {
-          const activityData = activityRes.value.data;
-          setActivity(Array.isArray(activityData.activities) ? activityData.activities : []);
+          setActivity(Array.isArray(activityRes.value.activities) ? activityRes.value.activities : []);
         } else {
           console.error('Error fetching GitHub activity:', activityRes.reason);
           setActivity([]);
         }
 
         if (trendingRes.status === 'fulfilled') {
-          const trendingData = trendingRes.value.data;
-          setTrending(Array.isArray(trendingData.trending) ? trendingData.trending : []);
+          setTrending(Array.isArray(trendingRes.value.trending) ? trendingRes.value.trending : []);
         } else {
           console.error('Error fetching GitHub trending:', trendingRes.reason);
           setTrending([]);

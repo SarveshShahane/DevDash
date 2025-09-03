@@ -198,7 +198,7 @@ router.get("/:username/activity", async (req, res) => {
       console.error("Error fetching repositories for activity:", error);
       return res.status(503).json({ 
         error: "GitHub API is currently unavailable for activity data",
-        activities: [] // Return empty activities as fallback
+        activities: [] 
       });
     }
     

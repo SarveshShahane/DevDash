@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import api from '../api';
 import { useUserStore } from '../zustand/store';
 
 const useDashboardData = () => {
@@ -43,7 +44,7 @@ const useDashboardData = () => {
 
       if (githubUsername) {
         try {
-          const githubResponse = await fetch(`http://localhost:3000/api/github/${githubUsername}`);
+          const githubResponse = await api.get(`github/${githubUsername}`);
           if (githubResponse.ok) {
             githubData = await githubResponse.json();
           }
@@ -54,7 +55,7 @@ const useDashboardData = () => {
 
       if (leetcodeUsername) {
         try {
-          const leetcodeResponse = await fetch(`http://localhost:3000/api/leetcode/${leetcodeUsername}`);
+          const leetcodeResponse = await api.get(`leetcode/${leetcodeUsername}`);
           if (leetcodeResponse.ok) {
             const leetcodeArray = await leetcodeResponse.json();
             leetcodeData = leetcodeArray[0]; 
